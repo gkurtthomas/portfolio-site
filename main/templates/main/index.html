@@ -1,0 +1,212 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Kurt Gonzales
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">
+Kurt Gonzales
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#nav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#about">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#projects">Projects</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<section id="home" class="hero fade">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<p class="hello">
+Hello, I'm
+</p>
+
+<h1>
+Kurt Gonzales
+</h1>
+
+<h3 id="typing"></h3>
+
+<p class="hero-text">
+
+I'm passionate about software, technology,
+and creating useful applications.
+
+Currently learning Django, Bootstrap,
+Git, and Python.
+
+</p>
+
+<div class="mt-4">
+
+<a href="#about" class="btn btn-primary me-3">
+
+Learn More
+
+</a>
+
+<a href="#contact" class="btn btn-outline-light">
+
+Contact Me
+
+</a>
+
+</div>
+
+<div class="socials mt-5">
+
+<i class="bi bi-github"></i>
+
+<i class="bi bi-linkedin"></i>
+
+<i class="bi bi-facebook"></i>
+
+<i class="bi bi-envelope-fill"></i>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<img
+src="{% static 'main/images/profile.jpg' %}"
+class="profile-img"
+alt="Profile">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about"
+class="about py-5 fade">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-5 text-center">
+
+<img
+src="{% static 'main/images/profile.jpg' %}"
+class="img-fluid rounded shadow about-img">
+
+</div>
+
+<div class="col-lg-7">
+
+<h6 class="text-primary">
+
+ABOUT ME
+
+</h6>
+
+<h2 class="fw-bold mb-4">
+
+Get to know me
+
+</h2>
+
+<p>
+
+I'm currently a Computer Engineering student
+with a growing passion for software
+development, web technologies,
+and creating meaningful digital experiences.
+
+</p>
+
+<p>
+
+I'm currently learning Django,
+Bootstrap, Git, Python,
+and continuously improving my skills
+through personal and academic projects.
+
+</p>
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+
+<h5>Education</h5>
+
+<p>Computer Engineering</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Location</h5>
+
+<p>Angeles City</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Status</h5>
+
+<p>Student</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+{% endblock %}
