@@ -1,0 +1,357 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Kurt Thomas C. Gonzales
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">
+Kurt Gonzales
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#nav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#about">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#projects">Projects</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<section id="home" class="hero fade">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<p class="hello">
+Hello, I'm
+</p>
+
+<h2>
+Kurt Thomas C. Gonzales
+</h2>
+
+<h3 class="subtitle">
+    An upcoming Computer Engineering student
+</h3>
+
+<p class="hero-text">
+
+I'm passionate about software, technology,
+and creating useful applications.
+
+Currently learning Django, Bootstrap,
+Git, and Python.
+
+</p>
+
+<div class="mt-4">
+
+<a href="#about" class="btn btn-primary me-3">
+
+Learn More
+
+</a>
+
+<a href="#contact" class="btn btn-outline-light">
+
+Contact Me
+
+</a>
+
+</div>
+
+<div class="socials mt-5">
+
+<a href="https://github.com/gkurtthomas"
+       target="_blank"
+       aria-label="GitHub">
+        <i class="bi bi-github"></i>
+    </a>
+
+<a href="mailto:kcgonzales1@student.hau.edu.ph"
+       aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<img
+src="{% static 'main/images/profile.jpg' %}"
+class="profile-img"
+alt="Profile">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about" class="about py-5 fade">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-5 text-center">
+
+<img
+src="{% static 'main/images/profile.jpg' %}"
+class="img-fluid rounded shadow about-img">
+
+</div>
+
+<div class="col-lg-7">
+
+<h6 class="text-primary">
+
+ABOUT ME
+
+</h6>
+
+<h2 class="fw-bold mb-4">
+
+Get to know me
+
+</h2>
+
+<p>
+
+I'm currently a Computer Engineering student
+with a growing passion for software
+development, web technologies,
+and creating meaningful digital experiences.
+
+</p>
+
+<p>
+
+I'm currently learning Django,
+Bootstrap, Git, Python,
+and continuously improving my skills
+through personal and academic projects.
+
+</p>
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+
+<h5>Education</h5>
+
+<p>Computer Engineering</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Location</h5>
+
+<p>Angeles City</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Status</h5>
+
+<p>Student</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects" class="projects py-5 fade">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h3 class="text-primary">MY PROJECTS</h3>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="project-card">
+
+                    <div class="project-icon">
+                        <i class="bi bi-folder2-open"></i>
+                    </div>
+
+                    <h3>Building Something Great</h3>
+
+                    <p>
+                        My projects are currently under development.
+                        Check back soon to see websites, applications,
+                        and other computer engineering projects.
+                    </p>
+
+                    <button class="btn btn-outline-light" disabled>
+                        Coming Soon
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact" class="contact py-5 fade">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h6 class="text-primary">CONTACT</h6>
+
+            <h2 class="fw-bold">Let's Connect</h2>
+
+            <p class="text-secondary">
+                Feel free to reach out if you'd like to connect, collaborate,
+                or simply say hello.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Email -->
+
+            <div class="col-md-6">
+
+                <div class="contact-card">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                    <h4>Email</h4>
+
+                    <p>
+                        <a href="mailto:kcgonzales1@student.hau.edu.ph" class="contact-link">
+                            kcgonzales1@student.hau.edu.ph
+                            </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- GitHub -->
+
+            <div class="col-md-6">
+
+                <div class="contact-card">
+
+                    <i class="bi bi-github"></i>
+
+                    <h4>GitHub</h4>
+
+                    <p>
+                        <a href="https://github.com/gkurtthomas"
+                        target="_blank"
+                        class="contact-link">
+                            github.com/gkurtthomas
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Location -->
+
+            <div class="col-md-6">
+
+                <div class="contact-card">
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+                    <h4>Location</h4>
+
+                    <p>Angeles City, Pampanga</p>
+
+                </div>
+
+            </div>
+
+            <!-- Resume -->
+
+            <div class="col-md-6">
+
+                <div class="contact-card">
+
+                    <i class="bi bi-file-earmark-person-fill"></i>
+
+                    <h4>Resume</h4>
+
+                    <p>Coming Soon</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
