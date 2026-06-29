@@ -70,6 +70,15 @@ body{
 
 }
 
+.socials a{
+    color:white;
+    text-decoration:none;
+}
+
+.socials a:hover{
+    color:#60a5fa;
+}
+
 /* Buttons */
 
 .btn{
