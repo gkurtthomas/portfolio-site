@@ -5,6 +5,7 @@ class PersonalInformation(models.Model):
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50)
+    headline = models.CharField(max_length=200, blank=True)
 
     summary = models.TextField()
 
