@@ -1,0 +1,77 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+{% block content %}
+
+<section class="projects py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h1 class="display-4 fw-bold">
+                <i class="bi bi-folder2-open text-primary"></i>
+                My Projects
+            </h1>
+
+            <p class="text-light">
+                Click a project to view more information.
+            </p>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            {% for project in projects %}
+
+            <div class="col-lg-8 mb-4">
+
+                <div class="project-card text-center">
+
+                    <h3>{{ project.project_name }}</h3>
+
+                    <a
+                        href="{% url 'project_detail' project.id %}"
+                        class="btn btn-outline-light mt-3">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="text-center">
+
+                <h3>No projects found.</h3>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+            <div class="text-center mt-5">
+
+                <a
+                    href="{% url 'home' %}"
+                    class="btn btn-primary">
+
+                    <i class="bi bi-house-fill"></i>
+                    Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

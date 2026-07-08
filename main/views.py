@@ -4,7 +4,8 @@ from .models import PersonalInformation, Project
 # Create your views here.
 def home(request):
     personal = PersonalInformation.objects.first()
-
+    projects = Project.objects.all()
+    
     return render(
         request,
         "main/index.html",

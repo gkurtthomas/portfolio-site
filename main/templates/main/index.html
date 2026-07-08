@@ -80,10 +80,6 @@ Hello, I'm
     An upcoming Computer Engineering student
 </h3>
 
-<p class="hero-text">
-{{ personal.headline }}
-</p>
-
 <div class="mt-4">
 
 <a href="#about" class="btn btn-primary me-3">
@@ -160,9 +156,9 @@ Get to know me
 
 </h2>
 
-<p>
+
 {{ personal.summary|linebreaks }}
-</p>
+
 
 <div class="row mt-4">
 
@@ -257,7 +253,18 @@ Get to know me
         </div>
 
         {% endfor %}
+        <div class="text-center mt-4">
 
+            <a
+                href="{% url 'project_list' %}"
+                class="btn btn-primary">
+
+                View All Projects
+
+            </a>
+
+        </div>
+        
     </div>
 
     </div>
@@ -294,8 +301,8 @@ Get to know me
                     <h4>Email</h4>
 
                     <p>
-                        <a href="mailto:kcgonzales1@student.hau.edu.ph" class="contact-link">
-                            <p>{{ personal.email }}</p>
+                        <a href="mailto:{{ personal.email }}" class="contact-link">
+                            {{ personal.email }}
                             </a>
                     </p>
 
