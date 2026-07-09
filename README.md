@@ -1,6 +1,6 @@
 # Personal Portfolio Website
 
-A responsive one-page portfolio website developed as part of a school project using **Django**, **Bootstrap 5**, **Python**, **HTML**, **CSS**, and **JavaScript**. The project demonstrates the use of the Django framework, Git version control, GitHub repository management, and Bootstrap for responsive web design.
+A responsive portfolio website developed as part of a school project using **Django**, **Bootstrap 5**, **Python**, **HTML**, **CSS**, and **JavaScript**. This version expands upon the original portfolio by integrating a **Django backend** and **SQLite database** to dynamically display personal information and projects. The project demonstrates the use of the Django framework, Git version control, GitHub repository management, Bootstrap for responsive web design, and database-driven web development.
 
 ## Features
 
@@ -12,11 +12,14 @@ A responsive one-page portfolio website developed as part of a school project us
 * Bootstrap 5 responsive layout
 * Django template inheritance
 * Static file management with Django
+* SQLite database integration
+* Django Admin for managing content
 
 ## Built With
 
 * Python
 * Django
+* SQLite
 * Bootstrap 5 (CDN)
 * HTML5
 * CSS3
@@ -30,13 +33,17 @@ A responsive one-page portfolio website developed as part of a school project us
 Portfolio/
 │
 ├── main/
+│   ├── migrations/
 │   ├── static/
 │   ├── templates/
+│   ├── admin.py
+│   ├── models.py
 │   ├── views.py
 │   └── urls.py
 │
 ├── portfolio/
 │
+├── db.sqlite3
 ├── manage.py
 ├── requirements.txt
 └── README.md
@@ -78,13 +85,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-5. Run the Django development server.
+5. Apply the database migrations.
+
+```bash
+python manage.py migrate
+```
+
+6. Run the Django development server.
 
 ```bash
 python manage.py runserver
 ```
 
-6. Open your browser and visit:
+7. Open your browser and visit:
 
 ```
 http://127.0.0.1:8000/
