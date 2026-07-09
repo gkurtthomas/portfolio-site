@@ -3,7 +3,11 @@
 {% load static %}
 
 {% block title %}
-Kurt Thomas C. Gonzales
+{{ personal.first_name }}
+{% if personal.middle_name %}
+        {{ personal.middle_name }}
+    {% endif %}
+{{ personal.last_name }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +17,8 @@ Kurt Thomas C. Gonzales
 <div class="container">
 
 <a class="navbar-brand fw-bold" href="#">
-Kurt Gonzales
+{{ personal.first_name }}
+{{ personal.last_name }}
 </a>
 
 <button
@@ -67,22 +72,13 @@ Hello, I'm
 </p>
 
 <h2>
-Kurt Thomas C. Gonzales
+{{ personal.first_name }}
+{{ personal.last_name }}
 </h2>
 
 <h3 class="subtitle">
     An upcoming Computer Engineering student
 </h3>
-
-<p class="hero-text">
-
-I'm passionate about software, technology,
-and creating useful applications.
-
-Currently learning Django, Bootstrap,
-Git, and Python.
-
-</p>
 
 <div class="mt-4">
 
@@ -160,23 +156,9 @@ Get to know me
 
 </h2>
 
-<p>
 
-I'm currently a Computer Engineering student
-with a growing passion for software
-development, web technologies,
-and creating meaningful digital experiences.
+{{ personal.summary|linebreaks }}
 
-</p>
-
-<p>
-
-I'm currently learning Django,
-Bootstrap, Git, Python,
-and continuously improving my skills
-through personal and academic projects.
-
-</p>
 
 <div class="row mt-4">
 
@@ -192,7 +174,7 @@ through personal and academic projects.
 
 <h5>Location</h5>
 
-<p>Angeles City</p>
+<p>{{ personal.address }}</p>
 
 </div>
 
@@ -224,33 +206,66 @@ through personal and academic projects.
 
         </div>
 
-        <div class="row justify-content-center">
+            <div class="row justify-content-center">
 
-            <div class="col-lg-8">
+        {% for project in projects %}
 
-                <div class="project-card">
+        <div class="col-lg-8 mb-4">
 
-                    <div class="project-icon">
-                        <i class="bi bi-folder2-open"></i>
-                    </div>
+            <div class="project-card">
 
-                    <h3>Building Something Great</h3>
-
-                    <p>
-                        My projects are currently under development.
-                        Check back soon to see websites, applications,
-                        and other computer engineering projects.
-                    </p>
-
-                    <button class="btn btn-outline-light" disabled>
-                        Coming Soon
-                    </button>
-
+                <div class="project-icon">
+                    <i class="bi bi-folder2-open"></i>
                 </div>
+
+                <h3>{{ project.project_name }}</h3>
+
+                <a href="{% url 'project_detail' project.id %}"
+                class="btn btn-outline-light">
+
+                    View Project
+
+                </a>
 
             </div>
 
         </div>
+
+        {% empty %}
+
+        <div class="col-lg-8">
+
+            <div class="project-card">
+
+                <div class="project-icon">
+                    <i class="bi bi-folder2-open"></i>
+                </div>
+
+                <h3>No Projects Yet</h3>
+
+                <p>
+                    Projects will appear here once they are added through
+                    the Django Admin.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+        <div class="text-center mt-4">
+
+            <a
+                href="{% url 'project_list' %}"
+                class="btn btn-primary">
+
+                View All Projects
+
+            </a>
+
+        </div>
+        
+    </div>
 
     </div>
 
@@ -286,8 +301,8 @@ through personal and academic projects.
                     <h4>Email</h4>
 
                     <p>
-                        <a href="mailto:kcgonzales1@student.hau.edu.ph" class="contact-link">
-                            kcgonzales1@student.hau.edu.ph
+                        <a href="mailto:{{ personal.email }}" class="contact-link">
+                            {{ personal.email }}
                             </a>
                     </p>
 
@@ -327,7 +342,7 @@ through personal and academic projects.
 
                     <h4>Location</h4>
 
-                    <p>Angeles City, Pampanga</p>
+                    <p>{{ personal.address }}</p>
 
                 </div>
 
