@@ -36,7 +36,7 @@
                             </h5>
 
                             <p class="mt-2 mb-0">
-                                {{ project.description }}
+                                {{ project.description|linebreaks }}
                             </p>
 
                         </div>
@@ -92,7 +92,7 @@
                     <div class="text-center mt-5">
 
                         <a
-                            href="{% url 'home' %}"
+                            href="{% url 'home' %}#projects"
                             class="btn btn-secondary me-2">
 
                             <i class="bi bi-house-fill"></i>

@@ -6,6 +6,12 @@ from .models import (
     Testimony,
 )
 
+def add_bootstrap_classes(form):
+    for field in form.fields.values():
+        field.widget.attrs.update({
+            "class": "form-control"
+        })
+        
 class ProjectForm(forms.ModelForm):
 
     class Meta:
@@ -18,17 +24,10 @@ class ProjectForm(forms.ModelForm):
             "link",
         ]
 
-        widgets = {
-            "link": forms.URLInput(
-                attrs={
-                    "placeholder": "Optional"
-                }
-            )
-        }
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["link"].required = False
+
+        add_bootstrap_classes(self)
 
 class InquiryForm(forms.ModelForm):
 
@@ -37,9 +36,23 @@ class InquiryForm(forms.ModelForm):
 
         fields = "__all__"
 
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        add_bootstrap_classes(self)
+
 class TestimonyForm(forms.ModelForm):
 
     class Meta:
         model = Testimony
 
         fields = "__all__"
+
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        add_bootstrap_classes(self)

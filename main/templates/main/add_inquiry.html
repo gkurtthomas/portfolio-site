@@ -2,16 +2,58 @@
 
 {% block content %}
 
-<h2>Send an Inquiry</h2>
+<section class="contact py-5">
 
-<form method="POST">
-    {% csrf_token %}
+    <div class="container">
 
-    {{ form.as_p }}
+        <div class="row justify-content-center">
 
-    <button type="submit">
-        Submit
-    </button>
-</form>
+            <div class="col-lg-8">
 
+                <div class="contact-card">
+
+                    <h1 class="mb-4 text-center">
+
+                        Send an Inquiry
+
+                    </h1>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+
+                        {{ form.as_p }}
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Submit Inquiry
+
+                        </button>
+
+
+                        <a
+                            href="{% url 'home' %}"
+                            class="btn btn-outline-light">
+
+                            Cancel
+
+                        </a>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 {% endblock %}
