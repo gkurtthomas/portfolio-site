@@ -98,7 +98,7 @@ def add_testimony(request):
 
             form.save()
 
-            return redirect("home")
+            return redirect("testimony_list")
 
     else:
 
@@ -114,3 +114,18 @@ class TestimonyListView(ListView):
     model = Testimony
     template_name = "main/testimony_list.html"
     context_object_name = "testimonies"
+
+def testimony_detail(request, testimony_id):
+
+    testimony = get_object_or_404(
+        Testimony,
+        id=testimony_id
+    )
+
+    return render(
+        request,
+        "main/testimony_detail.html",
+        {
+            "testimony": testimony,
+        }
+    )

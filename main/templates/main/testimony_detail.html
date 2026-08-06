@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<h2>{{ testimony.full_name }}</h2>
+
+<p>
+    {{ testimony.content }}
+</p>
+
+<a href="{% url 'testimony_list' %}">
+    Back to Testimonials
+</a>
+
+{% endblock %}
