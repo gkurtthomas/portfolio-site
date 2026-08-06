@@ -27,4 +27,10 @@ urlpatterns = [
     views.add_inquiry,
     name="add_inquiry"
 ),
+
+    path(
+    "testimonies/add/",
+    views.add_testimony,
+    name="add_testimony"
+),
 ]
