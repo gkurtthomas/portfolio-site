@@ -1,0 +1,84 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Testimonials
+{% endblock %}
+
+
+{% block content %}
+
+<section class="testimonials py-5">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <h6 class="text-primary">
+            TESTIMONIALS
+        </h6>
+
+        <h2 class="fw-bold">
+            What People Say
+        </h2>
+        
+        <a href="{% url 'add_testimony' %}" 
+   class="btn btn-primary mt-3">
+
+    Leave a Testimony
+
+</a>
+    </div>
+
+
+    <div class="row g-4">
+
+    {% for testimony in testimonies %}
+
+        <div class="col-md-6">
+
+            <div class="testimonial-card">
+
+                <i class="bi bi-chat-quote-fill"></i>
+
+                <p>
+                    "{{ testimony.content }}"
+                </p>
+
+
+                <h5>
+                    {{ testimony.full_name }}
+                </h5>
+
+
+                <a href="{% url 'testimony_detail' testimony.id %}"
+                   class="btn btn-outline-light mt-3">
+
+                    Read More
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    {% empty %}
+
+        <div class="text-center">
+
+            <p>
+                No testimonies available yet.
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+    </div>
+
+
+</div>
+
+</section>
+
+{% endblock %}

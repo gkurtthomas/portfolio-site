@@ -1,0 +1,59 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<section class="contact py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="contact-card">
+
+                    <h1 class="mb-4 text-center">
+
+                        Send an Inquiry
+
+                    </h1>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+
+                        {{ form.as_p }}
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Submit Inquiry
+
+                        </button>
+
+
+                        <a
+                            href="{% url 'home' %}"
+                            class="btn btn-outline-light">
+
+                            Cancel
+
+                        </a>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

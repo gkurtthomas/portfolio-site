@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="projects py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="project-card">
+
+                    <h1 class="mb-4 text-center">
+
+                        Leave a Testimony
+
+                    </h1>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+
+                        {{ form.as_p }}
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Submit Testimony
+
+                        </button>
+
+
+                        <a
+                            href="{% url 'testimony_list' %}"
+                            class="btn btn-outline-light">
+
+                            Cancel
+
+                        </a>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import PersonalInformation, Project
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import PersonalInformation, Project, Testimony
+from .forms import ProjectForm, InquiryForm, TestimonyForm
+from django.views.generic import ListView
 
 # Create your views here.
 def home(request):
@@ -39,5 +41,91 @@ def project_detail(request, project_id):
         "main/project_detail.html",
         {
             "project": project,
+        }
+    )
+
+def add_project(request):
+
+    if request.method == "POST":
+
+        form = ProjectForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("project_list")
+
+    else:
+
+        form = ProjectForm()
+
+    return render(
+        request,
+        "main/add_project.html",
+        {"form": form},
+    )
+
+def add_inquiry(request):
+
+    if request.method == "POST":
+
+        form = InquiryForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("home")
+
+    else:
+
+        form = InquiryForm()
+
+    return render(
+        request,
+        "main/add_inquiry.html",
+        {"form": form},
+    )
+
+def add_testimony(request):
+
+    if request.method == "POST":
+
+        form = TestimonyForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("testimony_list")
+
+    else:
+
+        form = TestimonyForm()
+
+    return render(
+        request,
+        "main/add_testimony.html",
+        {"form": form},
+    )
+
+class TestimonyListView(ListView):
+    model = Testimony
+    template_name = "main/testimony_list.html"
+    context_object_name = "testimonies"
+
+def testimony_detail(request, testimony_id):
+
+    testimony = get_object_or_404(
+        Testimony,
+        id=testimony_id
+    )
+
+    return render(
+        request,
+        "main/testimony_detail.html",
+        {
+            "testimony": testimony,
         }
     )

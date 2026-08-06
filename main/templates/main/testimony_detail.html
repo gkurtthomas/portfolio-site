@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Testimony
+{% endblock %}
+
+
+{% block content %}
+
+<section class="projects py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="project-card">
+
+                    <div class="project-icon">
+                        <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+
+
+                    <h1 class="text-center mb-4">
+                        {{ testimony.full_name }}
+                    </h1>
+
+
+                    <p class="text-center">
+                        "{{ testimony.content }}"
+                    </p>
+
+
+                    <div class="text-center mt-4">
+
+                        <a href="{% url 'testimony_list' %}"
+                           class="btn btn-outline-light">
+
+                            Back to Testimonials
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
