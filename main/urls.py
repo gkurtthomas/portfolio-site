@@ -16,4 +16,9 @@ urlpatterns = [
         name="project_detail"
     ),
 
+    path(
+    "projects/add/",
+    views.add_project,
+    name="add_project",
+),
 ]

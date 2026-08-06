@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import PersonalInformation, Project
+from .forms import ProjectForm
 
 # Create your views here.
 def home(request):
@@ -40,4 +41,26 @@ def project_detail(request, project_id):
         {
             "project": project,
         }
+    )
+
+def add_project(request):
+
+    if request.method == "POST":
+
+        form = ProjectForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("project_list")
+
+    else:
+
+        form = ProjectForm()
+
+    return render(
+        request,
+        "main/add_project.html",
+        {"form": form},
     )
