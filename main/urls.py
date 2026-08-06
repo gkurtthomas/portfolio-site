@@ -21,4 +21,10 @@ urlpatterns = [
     views.add_project,
     name="add_project",
 ),
+
+    path(
+    "inquiry/add/",
+    views.add_inquiry,
+    name="add_inquiry"
+),
 ]

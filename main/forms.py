@@ -18,6 +18,18 @@ class ProjectForm(forms.ModelForm):
             "link",
         ]
 
+        widgets = {
+            "link": forms.URLInput(
+                attrs={
+                    "placeholder": "Optional"
+                }
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["link"].required = False
+
 class InquiryForm(forms.ModelForm):
 
     class Meta:

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import PersonalInformation, Project
-from .forms import ProjectForm
+from .forms import ProjectForm, InquiryForm
 
 # Create your views here.
 def home(request):
@@ -62,5 +62,27 @@ def add_project(request):
     return render(
         request,
         "main/add_project.html",
+        {"form": form},
+    )
+
+def add_inquiry(request):
+
+    if request.method == "POST":
+
+        form = InquiryForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("home")
+
+    else:
+
+        form = InquiryForm()
+
+    return render(
+        request,
+        "main/add_inquiry.html",
         {"form": form},
     )
