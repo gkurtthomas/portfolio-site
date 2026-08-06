@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import PersonalInformation, Project, Testimony
 from .forms import ProjectForm, InquiryForm, TestimonyForm
+from django.views.generic import ListView
 
 # Create your views here.
 def home(request):
@@ -108,3 +109,8 @@ def add_testimony(request):
         "main/add_testimony.html",
         {"form": form},
     )
+
+class TestimonyListView(ListView):
+    model = Testimony
+    template_name = "main/testimony_list.html"
+    context_object_name = "testimonies"

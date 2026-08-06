@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<h2>Testimonials</h2>
+
+{% for testimony in testimonies %}
+
+<div>
+    <h3>
+        <a href="{% url 'testimony_detail' testimony.id %}">
+            {{ testimony.full_name }}
+        </a>
+    </h3>
+
+    <p>
+        {{ testimony.content|truncatewords:20 }}
+    </p>
+</div>
+
+<hr>
+
+{% empty %}
+
+<p>No testimonies yet.</p>
+
+{% endfor %}
+
+{% endblock %}

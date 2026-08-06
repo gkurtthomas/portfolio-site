@@ -33,4 +33,10 @@ urlpatterns = [
     views.add_testimony,
     name="add_testimony"
 ),
+
+    path(
+    "testimonies/",
+    views.TestimonyListView.as_view(),
+    name="testimony_list"
+),
 ]
