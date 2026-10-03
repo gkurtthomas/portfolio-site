@@ -23,6 +23,13 @@ def add_bootstrap_classes(form):
             })
         
 class ProjectForm(forms.ModelForm):
+    tech_stack = forms.ModelChoiceField(
+        queryset=TechStack.objects.all(),
+        widget=forms.RadioSelect(),
+        empty_label=None,
+        required=True,
+    )
+
     class Meta:
         model = Project
         fields = [
@@ -31,28 +38,33 @@ class ProjectForm(forms.ModelForm):
             "tech_stack",
             "link",
         ]
-
         labels = {
             "project_name": "Project Name",
             "description": "Project Description",
-            "tech_stack": "Tech Stacks",
+            "tech_stack": "Tech Stack",
             "link": "Link",
         }
-
         widgets = {
             "description": forms.Textarea(attrs={
                 "rows": 5,
-            }),
-
-            "tech_stack": forms.CheckboxSelectMultiple(attrs={
-                "class": "tech-stack-checkbox"
             }),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields["link"].required = True
+
         add_bootstrap_classes(self)
+
+    def save(self, commit=True):
+        project = super().save(commit=False)
+
+        if commit:
+            project.save()
+            project.tech_stack.set([self.cleaned_data["tech_stack"]])
+
+        return project
 
 class InquiryForm(forms.ModelForm):
 

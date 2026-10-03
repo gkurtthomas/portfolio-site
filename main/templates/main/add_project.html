@@ -66,26 +66,26 @@ Add New Project
                         </div>
 
 
-                        <!-- Tech Stacks -->
+                        <!-- Tech Stack -->
                         <div class="mb-4">
 
                             <label class="form-label d-block">
-                                Tech Stacks
+                                Tech Stack
                             </label>
 
                             <div class="tech-stack-options">
 
-                                {% for checkbox in form.tech_stack %}
+                                {% for radio in form.tech_stack %}
 
                                     <div class="tech-stack-item">
 
-                                        {{ checkbox.tag }}
+                                        {{ radio.tag }}
 
                                         <label
-                                            for="{{ checkbox.id_for_label }}"
+                                            for="{{ radio.id_for_label }}"
                                             class="tech-stack-label"
                                         >
-                                            {{ checkbox.choice_label }}
+                                            {{ radio.choice_label }}
                                         </label>
 
                                     </div>

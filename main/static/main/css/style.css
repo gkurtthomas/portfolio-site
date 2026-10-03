@@ -461,9 +461,9 @@ form .btn + .btn{
     margin-bottom: 0 !important;
 }
 
-.tech-stack-item input[type="checkbox"] {
+.tech-stack-item input[type="radio"] {
     appearance: auto !important;
-    -webkit-appearance: checkbox !important;
+    -webkit-appearance: radio !important;
 
     display: block !important;
 
