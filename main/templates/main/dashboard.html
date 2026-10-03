@@ -1,0 +1,233 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h1 class="display-4 fw-bold">
+                Admin Dashboard
+            </h1>
+
+            <p class="text-light">
+                Manage your projects and technology stacks.
+            </p>
+
+        </div>
+
+
+        <!-- Projects -->
+
+        <div class="project-card mb-5">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h2>
+                    Projects
+                </h2>
+
+                <a
+                    href="{% url 'add_project' %}"
+                    class="btn btn-primary"
+                >
+                    Add Project
+                </a>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-dark table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Description</th>
+                            <th>Tech Stack</th>
+                            <th>Link</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for project in projects %}
+
+                        <tr>
+
+                            <td>
+                                {{ project.project_name }}
+                            </td>
+
+                            <td>
+                                {{ project.description|truncatechars:50 }}
+                            </td>
+
+                            <td>
+
+                                {% for stack in project.tech_stack.all %}
+
+                                    {{ stack.name }}{% if not forloop.last %}, {% endif %}
+
+                                {% empty %}
+
+                                    No tech stack
+
+                                {% endfor %}
+
+                            </td>
+
+                            <td>
+
+                                {% if project.link %}
+
+                                    <a
+                                        href="{{ project.link }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        View Link
+                                    </a>
+
+                                {% else %}
+
+                                    No link
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                No projects found.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tech Stacks -->
+
+        <div class="project-card mb-5">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h2>
+                    Tech Stacks
+                </h2>
+
+                <a
+                    href="{% url 'add_tech_stack' %}"
+                    class="btn btn-primary"
+                >
+                    Add Tech Stack
+                </a>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-dark table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+                            <th>Tech Stack Name</th>
+                            <th>Project It Was Used</th>
+                            <th>Date Added</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for tech_stack in tech_stacks %}
+
+                        <tr>
+
+                            <td>
+                                {{ tech_stack.name }}
+                            </td>
+
+                            <td>
+
+                                {% for project in tech_stack.project_set.all %}
+
+                                    {{ project.project_name }}{% if not forloop.last %}, {% endif %}
+
+                                {% empty %}
+
+                                    Not used yet
+
+                                {% endfor %}
+
+                            </td>
+
+                            <td>
+                                {{ tech_stack.created_at|date:"M d, Y" }}
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                No tech stacks found.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center">
+
+            <a
+                href="{% url 'home' %}"
+                class="btn btn-outline-light"
+            >
+                View Portfolio
+            </a>
+
+            <a
+                href="{% url 'signout' %}"
+                class="btn btn-danger"
+            >
+                Sign Out
+            </a>
+            
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

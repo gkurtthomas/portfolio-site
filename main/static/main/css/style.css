@@ -441,3 +441,48 @@ form .btn + .btn{
     margin-left:10px;
 
 }
+
+.tech-stack-options {
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tech-stack-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    min-height: 20px;
+}
+
+.tech-stack-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.tech-stack-item input[type="checkbox"] {
+    appearance: auto !important;
+    -webkit-appearance: checkbox !important;
+
+    display: block !important;
+
+    width: 16px !important;
+    height: 16px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex: 0 0 16px !important;
+}
+
+.tech-stack-label {
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    line-height: 16px !important;
+
+    cursor: pointer;
+}

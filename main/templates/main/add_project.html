@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 
 {% block title %}
-Add Project
+Add New Project
 {% endblock %}
 
 {% block content %}
@@ -17,31 +17,131 @@ Add Project
                 <div class="project-card">
 
                     <h1 class="mb-4 text-center">
-
                         Add New Project
-
                     </h1>
 
                     <form method="POST">
 
                         {% csrf_token %}
 
-                        {{ form.as_p }}
+                        <!-- Project Name -->
+                        <div class="mb-3">
+
+                            <label
+                                for="{{ form.project_name.id_for_label }}"
+                                class="form-label"
+                            >
+                                Project Name
+                            </label>
+
+                            {{ form.project_name }}
+
+                            {% for error in form.project_name.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- Description -->
+                        <div class="mb-3">
+
+                            <label
+                                for="{{ form.description.id_for_label }}"
+                                class="form-label"
+                            >
+                                Project Description
+                            </label>
+
+                            {{ form.description }}
+
+                            {% for error in form.description.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- Tech Stacks -->
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Tech Stacks
+                            </label>
+
+                            <div class="tech-stack-options">
+
+                                {% for checkbox in form.tech_stack %}
+
+                                    <div class="tech-stack-item">
+
+                                        {{ checkbox.tag }}
+
+                                        <label
+                                            for="{{ checkbox.id_for_label }}"
+                                            class="tech-stack-label"
+                                        >
+                                            {{ checkbox.choice_label }}
+                                        </label>
+
+                                    </div>
+
+                                {% empty %}
+
+                                    <p class="text-light">
+                                        No tech stacks available.
+                                    </p>
+
+                                {% endfor %}
+
+                            </div>
+
+                            {% for error in form.tech_stack.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- Link -->
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.link.id_for_label }}"
+                                class="form-label"
+                            >
+                                Link
+                            </label>
+
+                            {{ form.link }}
+
+                            {% for error in form.link.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
 
                         <button
                             type="submit"
-                            class="btn btn-primary">
-
+                            class="btn btn-primary"
+                        >
                             Add Project
-
                         </button>
 
                         <a
-                            href="{% url 'project_list' %}"
-                            class="btn btn-outline-light">
-
+                            href="{% url 'dashboard' %}"
+                            class="btn btn-outline-light"
+                        >
                             Cancel
-
                         </a>
 
                     </form>

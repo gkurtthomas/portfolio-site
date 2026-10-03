@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import PersonalInformation, Project, Testimony
-from .forms import ProjectForm, InquiryForm, TestimonyForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
+from .models import PersonalInformation, Project, Testimony, TechStack
+from .forms import ProjectForm, InquiryForm, TestimonyForm, TechStackForm
 from django.views.generic import ListView
 
 # Create your views here.
@@ -44,6 +47,7 @@ def project_detail(request, project_id):
         }
     )
 
+@user_passes_test(lambda user: user.is_superuser, login_url="signin")
 def add_project(request):
 
     if request.method == "POST":
@@ -54,7 +58,7 @@ def add_project(request):
 
             form.save()
 
-            return redirect("project_list")
+            return redirect("dashboard")
 
     else:
 
@@ -129,3 +133,60 @@ def testimony_detail(request, testimony_id):
             "testimony": testimony,
         }
     )
+
+def signin(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            return redirect("dashboard")
+
+        messages.error(request, "You do not have permission to access the dashboard.")
+        return redirect("home")
+
+    if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None and user.is_superuser:
+            login(request, user)
+            return redirect("dashboard")
+
+        messages.error(request, "Invalid username or password.")
+
+    return render(request, "main/signin.html")
+
+
+@user_passes_test(lambda user: user.is_superuser, login_url="signin")
+def dashboard(request):
+    projects = Project.objects.prefetch_related("tech_stack").all()
+    tech_stacks = TechStack.objects.prefetch_related("project_set").all()
+
+    return render(request, "main/dashboard.html", {
+        "projects": projects,
+        "tech_stacks": tech_stacks,
+    })
+
+def signout(request):
+    logout(request)
+    return redirect("signin")
+
+@user_passes_test(lambda user: user.is_superuser, login_url="signin")
+def add_tech_stack(request):
+    if request.method == "POST":
+        form = TechStackForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+
+    else:
+        form = TechStackForm()
+
+    return render(request, "main/add_tech_stack.html", {
+        "form": form
+    })

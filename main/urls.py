@@ -45,4 +45,28 @@ urlpatterns = [
     views.testimony_detail,
     name="testimony_detail"
 ),
+
+    path(
+    "signin/",
+    views.signin,
+    name="signin"
+),
+
+    path(
+    "dashboard/",
+    views.dashboard,
+    name="dashboard"
+),
+
+    path(
+    "signout/",
+    views.signout,
+    name="signout"
+),
+
+    path(
+    "tech-stacks/add/",
+    views.add_tech_stack,
+    name="add_tech_stack"
+),
 ]
