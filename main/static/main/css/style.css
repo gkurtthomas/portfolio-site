@@ -441,3 +441,64 @@ form .btn + .btn{
     margin-left:10px;
 
 }
+
+.tech-stack-options {
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tech-stack-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    min-height: 20px;
+}
+
+.tech-stack-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.tech-stack-item input[type="radio"] {
+    appearance: auto !important;
+    -webkit-appearance: radio !important;
+
+    display: block !important;
+
+    width: 16px !important;
+    height: 16px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex: 0 0 16px !important;
+}
+
+.tech-stack-label {
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    line-height: 16px !important;
+
+    cursor: pointer;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-actions form {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-actions .btn {
+    margin: 0;
+}

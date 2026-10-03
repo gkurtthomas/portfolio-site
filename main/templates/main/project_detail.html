@@ -49,7 +49,17 @@
                             </h5>
 
                             <p class="mt-2 mb-0">
-                                {{ project.tech_stack }}
+
+                                {% for stack in project.tech_stack.all %}
+
+                                    {{ stack.name }}{% if not forloop.last %}, {% endif %}
+
+                                {% empty %}
+
+                                    No tech stack specified.
+
+                                {% endfor %}
+
                             </p>
 
                         </div>
