@@ -486,3 +486,19 @@ form .btn + .btn{
 
     cursor: pointer;
 }
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-actions form {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-actions .btn {
+    margin: 0;
+}

@@ -208,22 +208,20 @@ Dashboard
         </div>
 
 
-        <div class="text-center">
+        <div class="text-center dashboard-actions">
 
-            <a
-                href="{% url 'home' %}"
-                class="btn btn-outline-light"
-            >
+            <a href="{% url 'home' %}" class="btn btn-outline-light">
                 View Portfolio
             </a>
 
-            <a
-                href="{% url 'signout' %}"
-                class="btn btn-danger"
-            >
-                Sign Out
-            </a>
-            
+            <form method="POST" action="{% url 'signout' %}">
+                {% csrf_token %}
+
+                <button type="submit" class="btn btn-danger">
+                    Sign Out
+                </button>
+            </form>
+
         </div>
 
     </div>

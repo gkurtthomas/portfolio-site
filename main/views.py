@@ -172,8 +172,11 @@ def dashboard(request):
     })
 
 def signout(request):
-    logout(request)
-    return redirect("signin")
+    if request.method == "POST":
+        logout(request)
+        return redirect("signin")
+
+    return redirect("dashboard")
 
 @user_passes_test(lambda user: user.is_superuser, login_url="signin")
 def add_tech_stack(request):
